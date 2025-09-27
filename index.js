@@ -16,11 +16,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // database connection
 connectDB();
 
+// routes
+app.use("/courses", course);
+
+
 app.use("", (req, res, next) => {
   res.send("hello world!!!!");
 });
 
-app.use("/courses", course);
 
 app.listen(PORT, () => {
   console.log(`Server is runnion on port: ${PORT}`);
