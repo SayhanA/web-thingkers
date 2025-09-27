@@ -1,9 +1,20 @@
 import express from "express";
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
 
+dotenv.config();
+
+const PORT = 8000 || process.env.PORT;
 const app = express();
+
+// middlewars
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("", (req, res, next) => {
   res.send("hello world!!!!");
 });
 
-app.listen(4000);
+app.listen(PORT, () => {
+  console.log(`Server is runnion on port: ${PORT}`);
+});
