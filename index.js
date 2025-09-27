@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import { connectDB } from "./configs/dbConnect.js";
+import course from "./routes/course.js";
 
 dotenv.config();
 
@@ -18,6 +19,8 @@ connectDB();
 app.use("", (req, res, next) => {
   res.send("hello world!!!!");
 });
+
+app.use("/courses", course);
 
 app.listen(PORT, () => {
   console.log(`Server is runnion on port: ${PORT}`);
