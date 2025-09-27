@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
+import { connectDB } from "./configs/dbConnect.js";
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const app = express();
 // middlewars
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// database connection
+connectDB();
 
 app.use("", (req, res, next) => {
   res.send("hello world!!!!");
